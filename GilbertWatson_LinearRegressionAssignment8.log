@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  5 DEC 2013 21:07
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  6 DEC 2013 01:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -439,56 +439,130 @@ LaTeX Info: Redefining \nameref on input line 30.
 \tf@toc=\write5
 \openout5 = `GilbertWatson_LinearRegressionAssignment8.toc'.
 
+LaTeX Font Info:    Try loading font information for T1+aett on input line 65.
 
+(/usr/local/texlive/2013/texmf-dist/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+)
 Overfull \vbox (21.68121pt too high) has occurred while \output is active []
 
 
 [1
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 103.
-
-
-(/usr/local/texlive/2013/texmf-dist/tex/latex/ae/t1aett.fd
-File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 121.
+<Fig-addvarplots2.pdf, id=70, 433.62pt x 433.62pt>
+File: Fig-addvarplots2.pdf Graphic file (type pdf)
+ <use Fig-addvarplots2.pdf>
+Package pdftex.def Info: Fig-addvarplots2.pdf used on input line 109.
+(pdftex.def)             Requested size: 358.46039pt x 358.47534pt.
 
 Overfull \vbox (21.68121pt too high) has occurred while \output is active []
 
 
-[2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 121.
+[2 <./Fig-addvarplots2.pdf>]
+<Fig-addvarplots3.pdf, id=81, 433.62pt x 433.62pt>
+File: Fig-addvarplots3.pdf Graphic file (type pdf)
+ <use Fig-addvarplots3.pdf>
+Package pdftex.def Info: Fig-addvarplots3.pdf used on input line 120.
+(pdftex.def)             Requested size: 358.46039pt x 358.47534pt.
+
+Overfull \hbox (82.14774pt too wide) detected at line 142
+\OT1/cmr/m/n/10 [[] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 (4237\OML/cmm/m/it/10 
+:\OT1/cmr/m/n/10 4687511802 + 17\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 036618933466\
+OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 )] = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0009
+19163915830026[\OML/cmm/m/it/10 X[] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 (26327
+1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 957683668 + 5348\OML/cmm/m/it/10 :\OT1/cmr/m
+/n/10 44939715936\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 )]
+ []
+
+
+Overfull \vbox (21.68121pt too high) has occurred while \output is active []
+
+
+[3 <./Fig-addvarplots3.pdf>] <Fig-massstuff.pdf, id=94, 433.62pt x 433.62pt>
+File: Fig-massstuff.pdf Graphic file (type pdf)
+
+<use Fig-massstuff.pdf>
+Package pdftex.def Info: Fig-massstuff.pdf used on input line 183.
+(pdftex.def)             Requested size: 358.46039pt x 358.47534pt.
+
+Overfull \vbox (21.68121pt too high) has occurred while \output is active []
+
+
+[4]
+Overfull \vbox (21.68121pt too high) has occurred while \output is active []
+
+
+[5 <./Fig-massstuff.pdf>]
+LaTeX Font Info:    Try loading font information for TS1+aett on input line 252
+.
+
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/ts1aett.fd
+File: ts1aett.fd 
+)
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 252
+.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/ts1cmtt.fd
+File: ts1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `TS1/aett/m/sl' in size <10> not available
+(Font)              Font shape `TS1/cmtt/m/sl' tried instead on input line 252.
+
+
+Overfull \vbox (21.68121pt too high) has occurred while \output is active []
+
+
+[6]
+Overfull \vbox (21.68121pt too high) has occurred while \output is active []
+
+
+[7]
+Overfull \vbox (21.68121pt too high) has occurred while \output is active []
+
+
+[8]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 426.
+
+Overfull \vbox (21.68121pt too high) has occurred while \output is active []
+
+
+[9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 426.
  (./GilbertWatson_LinearRegressionAssignment8.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 121.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 121.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 426.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 426.
 Package rerunfilecheck Info: File `GilbertWatson_LinearRegressionAssignment8.ou
 t' has not changed.
-(rerunfilecheck)             Checksum: 5512D8C5BA293ACD45C542ACC695C405;443.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 121.
+(rerunfilecheck)             Checksum: 6A3452D7749474495979A0AC9A59D1C3;436.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 426.
  ) 
 Here is how much of TeX's memory you used:
- 6879 strings out of 493315
- 100728 string characters out of 6137904
- 181926 words of memory out of 5000000
- 10191 multiletter control sequences out of 15000+600000
- 27847 words of font info for 65 fonts, out of 8000000 for 9000
+ 6944 strings out of 493315
+ 102007 string characters out of 6137904
+ 183926 words of memory out of 5000000
+ 10225 multiletter control sequences out of 15000+600000
+ 28764 words of font info for 68 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 35i,6n,28p,357b,420s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
-ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
-l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsltt10.pfb></usr/loc
-al/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on GilbertWatson_LinearRegressionAssignment8.pdf (2 pages, 11391
+ 35i,8n,28p,432b,587s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
+r/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
+l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsltt10.pfb></usr/local/
+texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/cm-super/sfst1000.pfb>
+Output written on GilbertWatson_LinearRegressionAssignment8.pdf (9 pages, 17902
 8 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 194 PDF objects out of 1000 (max. 8388607)
+ 162 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 92 words of extra memory for PDF output out of 10000 (max. 10000000)
 

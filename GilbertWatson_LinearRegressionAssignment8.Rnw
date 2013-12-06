@@ -57,8 +57,65 @@ Refer to Grocery retailer Problem 6.9:
 
 \subsection{Answer:}
 
+\begin{enumerate}[a)]
+
+\item{} First, let's read in the data and estimate a simple model:
+<<groceriesdata,results=tex>>=
+library(xtable)
+grocery <- read.table(file="10.6.txt")
+names(grocery) <- c("labor.hours","cases","pct.labor","holiday")
+grocery.fit <- lm(labor.hours~cases+pct.labor,data=grocery)
+grocery.fitsum <- summary(grocery.fit)
+print(xtable(grocery.fitsum))
+@
+
+\item{} To make added variable plots we must first estimate several models:
+<<addvarplots>>=
+yonx1 <- lm(labor.hours~cases,data=grocery)
+yonx2 <- lm(labor.hours~pct.labor,data=grocery)
+x1onx2 <- lm(pct.labor~cases,data=grocery)
+x2onx1 <- lm(cases~pct.labor,data=grocery)
+@
+
+Now we can plot residuals against each other:
+<<addvarplots2,fig=TRUE>>=
+library(ggplot2)
+a <- qplot(x=x2onx1$residuals,
+      y=yonx2$residuals,
+      xlab="e(X1|X2)",
+      ylab="e(Y|X2)")
+a + geom_abline(intercept=0,slope=grocery.fit$coefficients[2])
+@
+
+<<addvarplots3,fig=TRUE>>=
+b <- qplot(x=x1onx2$residuals,
+      y=yonx1$residuals,
+      xlab="e(X2|X1)",
+      ylab="e(Y|X1)")
+b + geom_abline(intercept=0,slope=grocery.fit$coefficients[3])
+@
+
+
+\item{} 
+
+The added variable plots suggest that the model is not aided by the addition of $X_2$. While the slope of the line in the first plot is quite different than a horizontal line, indicating that $X_1$ should probably be added to a model already containing $X_2$, the line for the second is almost horizontal, indicating that $X_2$ should not be added to a model already containing $X_1$.
+
+\item{} 
+
+First we must regress the residuals from above through the origin:
+<<makestuffup>>=
+originreg <- lm(yonx2$residuals~x2onx1$residuals-1)
+originreg$coefficients
+@
+ 
+$$\epsilon{}\hat{(Y|X_2)} = \Sexpr{originreg$coefficients}[\epsilon{}(X_1|X_2)]$$
+$$[\hat{Y} - (\Sexpr{yonx2$coefficients[1]} + \Sexpr{yonx2$coefficients[2]}X_2)] = \Sexpr{originreg$coefficients}[X_1 - (\Sexpr{x2onx1$coefficients[1]} + \Sexpr{x2onx1$coefficients[2]}X_2)]$$
+$$\hat{Y} = \Sexpr{grocery.fit$coefficients[1]} + \Sexpr{grocery.fit$coefficients[2]}X_1 + \Sexpr{grocery.fit$coefficients[1]}X_2$$
+
+\end{enumerate}
+
 %-------------------------------------------
-\section{10.12abcd}
+\section{10.12}
 %--------------------------------------------
 
 Refer to Commercial Properties Problem 6.18:
@@ -72,8 +129,80 @@ Refer to Commercial Properties Problem 6.18:
 
 \subsection{Answer:}
 
+\begin{enumerate}[a)]
+
+\item{} First let's read in the data and estimate a model:
+<<commericalprops>>=
+commProps <- read.table(file="10.12.txt")
+names(commProps) <- c("rental.rates","age","expenses","vacancy","sqft")
+commProps.fit <- lm(rental.rates~age+expenses+vacancy+sqft,data=commProps)
+@
+
+Now let's compute the studentized delted residuals and identify potential outliers
+<<massstuff,fig=TRUE>>=
+library(MASS)
+stud.del.res <- studres(commProps.fit)
+qplot(seq(1,length(stud.del.res),1),abs(stud.del.res),
+      xlab="observation",
+      ylab="studentized delted residual")
+@
+
+Now let's calculate the Bonferroni critical value for outliers:
+<<bonferon>>=
+alpha <- 0.1
+critical.t <- qt(1-alpha/(2*length(stud.del.res)),
+                 length(stud.del.res)-
+                   length(commProps.fit$coefficients))
+paste0("The critical value is t = ",critical.t)
+paste0("Any studentized residuals > ",critical.t," ?  ",
+       any(abs(stud.del.res) > critical.t))
+@
+
+There are no outliers in the data by the bonferroni test. There aren't. I know what the next part of the question says and there aren't
+
+\item{} Let's find the diagonals of the hat matrix, use it to find outliers, and print the observation number:
+<<diagonal>>=
+diagonal <- lm.influence(commProps.fit)$hat
+threshold <- 2*(length(commProps.fit$coefficients)-1)/length(commProps$age)
+outliers <- as.vector(which(diagonal > threshold))
+paste(c("The outlier observations are:",outliers),collapse=" ")
+@
+
+\item{} First let's compute $X_{new}$:
+<<xnew>>=
+xnew <- c(10,12.00,0.05,350000)
+xold <- as.matrix(commProps.fit$model[,setdiff(names(commProps.fit$model),
+                                     c("rental.rates"))])
+@
+
+Then let's find $h_{new,new}$ and see if it is greater than the threshold value:
+<<newnew>>=
+hnewnew <- t(xnew)%*%solve(crossprod(xold))%*%xnew
+hnewnew
+@
+
+$h_{new,new}$ is well within the range of the other diagonal entires of $\bf{H}$. It's prediction would not involve hidden extrapolation.
+
+\item{} Let's find DFFITS, DFBETAS, and Cook's D for the following observations and make a table:
+<<weirdos,results=tex>>=
+weirdos <- c(61,8,3,53,6,62)
+diagnostics <- data.frame(DFFITS=dffits(commProps.fit)[weirdos],
+                          DFBETAS=dfbetas(commProps.fit)[weirdos],
+                          Cooks.D=cooks.distance(commProps.fit)[weirdos])
+diagnostics$`DFFITS > 1` <- abs(diagnostics$DFFITS) > 1
+diagnostics$`DFBETAS > 1` <- abs(diagnostics$DFBETAS) > 1
+diagnostics$`F Percentile` <- pf(diagnostics$Cooks.D,
+                                 4,
+                                 length(commProps$age)-4)
+print(xtable(diagnostics))
+@
+
+From our table it is clear that none of the appearant outliers are influential. DFFITS and DFBETAS are all less than 1 for these values, and Cook's D for these values is in a very low percential of the associated F distribution.
+
+\end{enumerate}
+
 %-------------------------------------------
-\section{10.20cdf}
+\section{10.20}
 %--------------------------------------------
 
 Refer to Lung pressure Problems 9.13 and 9.14. The subset regression model containing first-order terms for $X_1$ and $X_2$ and the cross-product term $X_1X_2$ is to be evaluated in detail.
@@ -81,18 +210,77 @@ Refer to Lung pressure Problems 9.13 and 9.14. The subset regression model conta
 \begin{enumerate}[a)]
 \item{} Obtain the variance inflation factors. Are there any indications that serious multicollinearity problems are present? Explain.
 \item{} Obtain the studentized deleted residuals and identify any outlying $Y$ observations. Use the Bonferroni outlier test procedure with $\alpha{} = .05$. State the decision rule and conclusion.
-\item{} Cases 3, 8, imd 15 are moderately far outlying with respect to their $X$ values, and case 7 is relatively far outlying with respect to its $Y$ value. Obtain DFFITS, DFBETAS, and Cook's distance values for these cases to assess their inf1uence. What do you conclude?
+\item{} Cases 3, 8, imd 15 are moderately far outlying with respect to their $X$ values, and case 7 is relatively far outlying with respect to its $Y$ value. Obtain DFFITS, DFBETAS, and Cook's distance values for these cases to assess their influence. What do you conclude?
 \end{enumerate}
 
 \subsection{Answer:}
+
+\begin{enumerate}[a)]
+
+\item{} Let's first read in the data and estimate the model:
+<<moremoneymoreproblems>>=
+Lung <- read.table(file="10.20.txt")
+names(Lung) <- c("arterial.pressure","emptying.rate","ejection.rate","blood.gas")
+Lung.fit <- lm(arterial.pressure~emptying.rate*ejection.rate,
+               data=Lung)
+@
+
+Now let's obtain the variance inflation factors and $\bar{VIF}$:
+<<vif>>=
+library(car)
+vif <- vif(Lung.fit)
+bar.vif <- mean(vif)
+vif
+bar.vif
+@
+
+Yes, multicollinearity is an issue. All VIF values are above 1 and the interaction term's value is far above the mean VIF.
+
+\item{} Are there any studentized deleted residuals greater than the critical value?
+<<99problemsbuta>>=
+stud.del.res <- studres(Lung.fit)
+alpha <- 0.05
+critical.t <- qt(1-alpha/(2*length(stud.del.res)),
+                 length(stud.del.res)-
+                   length(Lung.fit$coefficients))
+paste0("The critical value is t = ",critical.t)
+paste0("Any studentized residuals > ",critical.t," ?  ",
+       any(abs(stud.del.res) > critical.t))
+@
+
+The decision rule is that if the studentized deleted residual is greater than the critical value, $\Sexpr{critical.t}$, then we reject the null hypothesis that the outcome value is not an outlier. No studentized deleted residuals are greater than this critical value in this case, so we conclude that none of the $Y$ values are outliers.
+
+\item{} Let's build a table to assess observation influence:
+<<againandagainitgoes,results=tex>>=
+weirdos <- c(3,8,15,7)
+diagnostics <- data.frame(DFFITS=dffits(Lung.fit)[weirdos],
+                          DFBETAS=dfbetas(Lung.fit)[weirdos],
+                          Cooks.D=cooks.distance(Lung.fit)[weirdos])
+diagnostics$`DFFITS > 1` <- abs(diagnostics$DFFITS) > 1
+diagnostics$`DFBETAS > 1` <- abs(diagnostics$DFBETAS) > 1
+diagnostics$`F Percentile` <- pf(diagnostics$Cooks.D,
+                                 3,
+                                 length(Lung$arterial.pressure)-3)
+print(xtable(diagnostics))
+@
+
+We can conclude from this table that observations 8 and 7 are unduly influential to the model. They both have DFFITS and DFBETAS greater than 1 and Cook's D's that have a high percential ranking.
+
+\end{enumerate}
 
 %-------------------------------------------
 \section{10.23}
 %--------------------------------------------
 
-Show that (10.37) is algebraically equivalent to (1O.33a).
+Show that (10.37) is algebraically equivalent to (10.33a).
 
 \subsection{Answer:}
+
+Show that:
+$$D_i = \frac{(\bf{b{} - \bf{b}_{(i)})'\bf_{X}'\bf{X}(\bf{b} - \bf{b}_{(i)})}{pMSE} $$
+is equivalent to:
+$$D_i = \frac{(\bf{\hat{Y}} - \bf{\hat{Y}_{(i)}})'(\bf{\hat{Y}} - \bf{\hat{Y}_{(i)}})}{pMSE} $$
+
 
 %-------------------------------------------
 \section{System Information}
