@@ -280,7 +280,14 @@ Show that:
 $$D_i = \frac{(\bf{b} - \bf{b}_{(i)})'\bf{X}'\bf{X}(\bf{b} - \bf{b}_{(i)})}{pMSE} $$
 is equivalent to:
 $$D_i = \frac{(\bf{\hat{Y}} - \bf{\hat{Y}_{(i)}})'(\bf{\hat{Y}} - \bf{\hat{Y}_{(i)}})}{pMSE} $$
-
+First, note that the following is true:
+$$\bf{\hat{Y} - \hat{Y}_i} = \bf{Xb + \epsilon{} - Xb_i - \epsilon{}} $$
+$$\bf{\hat{Y} - \hat{Y}_i} = \bf{X(b - b_i)} $$
+Then, using the fact that:
+$$(\bf{X(b - b_i)})' = \bf{(b - b_i)'X'} $$
+And substituting into the second equation, we get:
+$$D_i = \frac{(\bf{b} - \bf{b}_{(i)})'\bf{X}'\bf{X}(\bf{b} - \bf{b}_{(i)})}{pMSE} $$
+Which is the first equation as required.
 
 %-------------------------------------------
 \section{System Information}
