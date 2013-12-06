@@ -277,7 +277,7 @@ Show that (10.37) is algebraically equivalent to (10.33a).
 \subsection{Answer:}
 
 Show that:
-$$D_i = \frac{(\bf{b{} - \bf{b}_{(i)})'\bf_{X}'\bf{X}(\bf{b} - \bf{b}_{(i)})}{pMSE} $$
+$$D_i = \frac{(\bf{b} - \bf{b}_{(i)})'\bf{X}'\bf{X}(\bf{b} - \bf{b}_{(i)})}{pMSE} $$
 is equivalent to:
 $$D_i = \frac{(\bf{\hat{Y}} - \bf{\hat{Y}_{(i)}})'(\bf{\hat{Y}} - \bf{\hat{Y}_{(i)}})}{pMSE} $$
 
