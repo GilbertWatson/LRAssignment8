@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{enumerate}
+
+\textwidth=6.2in
+\textheight=8.5in
+%\parskip=.3cm
+\oddsidemargin=.1in
+\evensidemargin=.1in
+\headheight=-.3in
+
+
+%------------------------------------------------------------
+% newcommand
+%------------------------------------------------------------
+\newcommand{\scscst}{\scriptscriptstyle}
+\newcommand{\scst}{\scriptstyle}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Rclass}[1]{\textit{#1}}
+\newcommand{\Rpackage}[1]{\textit{#1}}
+\newcommand{\Rexpression}[1]{\texttt{#1}}
+\newcommand{\Rmethod}[1]{{\texttt{#1}}}
+\newcommand{\Rfunarg}[1]{{\texttt{#1}}}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+%------------------------------------------------------------
+\title{Assignment 8}
+%------------------------------------------------------------
+\author{Gilbert Watson}
+\date{Friday, December 6th, 2013}
+
+\SweaveOpts{highlight=TRUE, tidy=TRUE, keep.space=TRUE, keep.blank.space=FALSE, keep.comment=TRUE}
+\SweaveOpts{prefix.string=Fig}
+
+
+\maketitle
+\tableofcontents
+
+%-------------------------------------------
+\section{10.6}
+%--------------------------------------------
+
+Refer to Grocery retailer Problem 6.9:
+
+\begin{enumerate}[a)]
+\item{} Fit regression model (6.1) to the data using $X_1$ and $X_2$ only.
+\item{} Prepare an added-variable plot for each of the predictor variables $X_1$ and $X_2$.
+\item{} Do your plots in part(a) suggest that the regression relationships in the fitted regressior function in part(a) are inapprppriate for any of the predictor variables? Explain.
+\item{} Obtain the fitted regression function in part(a) by separately regressing both $Y$ and $X_2$ or $X_1$, and then regressing the residuals in an appropriate fashion.
+\end{enumerate}
+
+\subsection{Answer:}
+
+%-------------------------------------------
+\section{10.12abcd}
+%--------------------------------------------
+
+Refer to Commercial Properties Problem 6.18:
+
+\begin{enumerate}[a)]
+\item{} Obtain the studentized deleted residuals and identify any outlying $Y$ observations. Use the Bonferroni outlier test procedure with $\alpha{} = 0.1. State the decision rule and conclusion.
+\item{} Obtain the diagonal elements of the hat matrix. Identify any outlying $X$ observations.
+\item{} The researcher wishes to estimate the rental rates of a property whose age is 10 years, whose operating expenses and taxes are 12.00, whose ocupancy rate is 0.05, and whose square footage is 350,000. Use (10.29) to determine whether this estimate will involve a hidden extrapolation.
+\item{} Cases 61, 8, 3, and 53 appear to be outlying $X$ observations, and cases 6 and 62 appear to be outlying $Y$ observations. Obtain the DFFITS, DFBETAS, and Cook's distance values for each case to assess its influence. What do you conclude?
+\end{enumerate}
+
+\subsection{Answer:}
+
+%-------------------------------------------
+\section{10.20cdf}
+%--------------------------------------------
+
+Refer to Lung pressure Problems 9.13 and 9.14. The subset regression model containing first-order terms for $X_1$ and $X_2$ and the cross-product term $X_1X_2$ is to be evaluated in detail.
+
+\begin{enumerate}[a)]
+\item{} Obtain the variance inflation factors. Are there any indications that serious multicollinearity problems are present? Explain.
+\item{} Obtain the studentized deleted residuals and identify any outlying $Y$ observations. Use the Bonferroni outlier test procedure with $\alpha{} = .05$. State the decision rule and conclusion.
+\item{} Cases 3, 8, imd 15 are moderately far outlying with respect to their $X$ values, and case 7 is relatively far outlying with respect to its $Y$ value. Obtain DFFITS, DFBETAS, and Cook's distance values for these cases to assess their inf1uence. What do you conclude?
+\end{enumerate}
+
+\subsection{Answer:}
+
+%-------------------------------------------
+\section{10.23}
+%--------------------------------------------
+
+Show that (10.37) is algebraically equivalent to (1O.33a).
+
+\subsection{Answer:}
+
+%-------------------------------------------
+\section{System Information}
+%--------------------------------------------
+
+<<sessionInfo>>=
+sessionInfo();
+@ 
+
+\end{document}
